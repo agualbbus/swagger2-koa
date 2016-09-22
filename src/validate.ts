@@ -51,7 +51,7 @@ export default function(document: swagger.Document): (context: any, next: () => 
     }
 
     // check the request matches the swagger schema
-    let validationErrors = swagger.validateRequest(compiledPath, context.method, context.request.query, context.request.body);
+    let validationErrors = swagger.validateRequest(compiledPath, context.method, context.request.query, context.request.body, context.request.headers);
     if (validationErrors === undefined) {
       // operation not defined, return 405 (method not allowed)
       context.status = 405;
